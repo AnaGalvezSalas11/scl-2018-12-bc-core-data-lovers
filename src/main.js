@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   window.M.AutoInit();
   window.ImageMap('img[usemap]');
+  window.google.charts.load("current", {packages:["corechart"]});
+  window.google.charts.setOnLoadCallback(drawChart);
 });
 
 
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
   imagePokemon(); //aqui se agrega las imagenes de los pokemon
 })
 
-//AQUI VA BOTON CALCULAR
+//INTERACCION BOTON CALCULAR
   document.getElementById("btnCalculo").addEventListener("click", () =>{
   document.getElementById("information").style.display="none";
   document.getElementById("portada").style.display="none";
@@ -21,11 +23,22 @@ document.addEventListener('DOMContentLoaded', function() {
   window.ImageMap('img[usemap]') 
 })
 
-//Aqui va boton volver del logo GO!
+//INTERACCION LOGO GO!
 document.getElementById("brand-logo").addEventListener("click", () =>{
 document.getElementById("calculo").style.display="none";
 document.getElementById("information").style.display="block";
 imagePokemon();
+
+})
+
+//INTERACCIÓN BOTON CANDY
+
+document.getElementById("btnCandy").addEventListener("click", () =>{
+document.getElementById("information").style.display="none";
+document.getElementById("portada").style.display="none";
+document.getElementById("calculo").style.display="none"
+document.getElementById("grafic").style.display="block";
+
 
 })
 
@@ -35,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   
-  // interaccion del boton filtrar por tipo
+  //Interaccion del boton filtrar por tipo
 
 document.getElementById("select2").addEventListener("change",() =>{
     document.getElementById("ordenado").innerHTML = " "  //cambiamos nombre de div en esta interacción
@@ -73,7 +86,7 @@ document.getElementById("select2").addEventListener("change",() =>{
 
 
 
-//interacción del boton ordenar
+//Interacción del boton ordenar
 
 const div_contenedor = document.getElementById("ordenado"); //imprime el listado ordenado
 
@@ -310,7 +323,7 @@ document.getElementById("veinticuatro").addEventListener("click", () => {
             
 
 
-    //  aqui se muestran las imagenes de los pokemon en el inicio
+    //Aqui se muestran las imagenes de los pokemon en el inicio
 
 function imagePokemon (){
   for (let i = 0; i < window.POKEMON.pokemon.length ;i++) {
@@ -331,5 +344,30 @@ function imagePokemon (){
 }
          
 }
-              
+
+
+function drawChart() {
+  var data = window.google.visualization.arrayToDataTable([
+    ['Candys', 'Cantidad de pokemón'],
+    ['12 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,12).length],
+    ['25 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,25).length],
+    ['50 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,50).length],
+    ['100 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,100).length],
+    ['400 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,400).length],
+    
+  ]);
+
+  var options = {
+    'width': 900, 
+    'height': 500,
+    title: 'Grupos de Pokemón de Acuerdo a la Cantidad de Candy que Necesitan para Evolucionar',
+    pieHole: 0.4,
+  };
+
+  var chart = new window.google.visualization.PieChart(document.getElementById('donutchart'));
+  chart.draw(data, options);
+}
+    
+
+
           
