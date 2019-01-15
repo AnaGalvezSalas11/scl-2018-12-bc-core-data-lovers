@@ -53,7 +53,9 @@ window.pokego = {
 
 
   }
-  
+
+
+
 },
 //podria cambiarlo por un map
 computeStats:(data, hours) => {
@@ -68,28 +70,35 @@ computeStats:(data, hours) => {
       if (spawn.slice(0,3) === hours){
         counter++
       }
-
     })
 
     return Math.round(100 * counter/151) //redondeamos porcentaje
   }
 
-}
+}, 
 
 
 window.pokego2 = {
       filterData(data, condition)  {
-
-      const tiposDePokemon = data.filter(tipos =>{
-      return tipos.type.indexOf(condition) !== -1;
-       })
-       return tiposDePokemon;
+        let tiposDePokemon;
+        if (typeof condition === "string") 
+        {
+          tiposDePokemon = data.filter(tipos =>{
+            return tipos.type.indexOf(condition) !== -1;
+           })
+              
+        }
+        else {
+          tiposDePokemon = data.filter(candy =>{
+            return candy.candy_count===(condition);
+          })  
       }
+      return tiposDePokemon; 
     }
-    
+  };
 //obervaciones de Ale:
  //cambiar las variables en ingles y que sean bien descriptivas
  //trabajar más con arreglos
  //revizar html semantico, hay muchos div y desorden
  //css hay class duplicadas, falto DRY
- //    
+ 

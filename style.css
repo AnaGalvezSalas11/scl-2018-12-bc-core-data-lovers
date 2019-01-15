@@ -217,7 +217,7 @@ body{
 
 
 
-}
+
 
 .relojPm{
         padding: 5px 10px 5px 10px;
@@ -232,3 +232,15 @@ body{
     text-align: center;
 }
 
+#grafic{
+    display: none;
+}
+
+#chart_div{
+    width: 100%;
+    left: 23%;;
+    right: -0.22%;
+    top: 50%;
+    bottom: 0%;
+
+}
