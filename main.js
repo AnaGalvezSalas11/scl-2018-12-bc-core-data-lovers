@@ -92,7 +92,7 @@ document.getElementById("select2").addEventListener("change",() =>{
 
      
    }
-   abrirFicha(window.pokego2.filterData(thepokemon.pokemon, tipo)); 
+   abrirFicha(window.pokego2.filterData(thepokemon.pokemon, tipo), fichaPokemon); 
    });
 
 
@@ -130,7 +130,7 @@ const div_contenedor = document.getElementById("ordenado"); //imprime el listado
      `    
      ;}
 
-     abrirFicha(window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value)); 
+     abrirFicha(window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value),fichaPokemon); 
      }     
 
     if (document.getElementById("select1").value === "1-151"){
@@ -155,7 +155,7 @@ const div_contenedor = document.getElementById("ordenado"); //imprime el listado
     
           
     }
-    abrirFicha(window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value)); 
+    abrirFicha(window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value), fichaPokemon); 
 
     }});
 
@@ -168,7 +168,7 @@ const div_contenedor = document.getElementById("ordenado"); //imprime el listado
 //aquí va la interaccion de las fichas por pokemon
 
 let fichaPokemon = document.getElementsByClassName("ficha");
-function abrirFicha(data) {
+function abrirFicha(data, fichaPokemon) {
   for (let i = 0; i < fichaPokemon.length; i++) {
     fichaPokemon[i].addEventListener("click", () => {
       document.getElementById("probandomodal").innerHTML = `
@@ -334,9 +334,7 @@ document.getElementById("veinticuatro").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "00:")}`
 });
            
-// function(){
-//   imagePokemon
-// }           
+          
 
 
     //  aqui se muestran las imagenes de los pokemon en el inicio
@@ -361,33 +359,63 @@ function imagePokemon (data){
         </div>
       </div>  `      
 }
- abrirFicha(data.pokemon)        
+ abrirFicha(data.pokemon, fichaPokemon)        
 }
 
-window.google.charts.load("current", {packages:["corechart"]});
-window.google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-  let data = window.google.visualization.arrayToDataTable([
-    ['Candys', 'Cantidad de pokemón'],
-    ['0 Candys',      81],
-    ['12 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,12).length],
-    ['25 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,25).length],
-    ['50 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,50).length],
-    ['100 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,100).length],
-    ['400 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,400).length],
-    
-  ]);
+      // Aquí se muestra el grafico
 
-  let options = {
-    'width': 900, 
-    'height': 500,
-    'legend':  {'position': 'top', 'maxLines': 2},
-    'colors': ['#1A8763'],
-    'interpolateNulls': true,
-    
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawMaterial);
 
-  };
+function drawMaterial() {
+      let data = google.visualization.arrayToDataTable([
+        ['Candys', 'Cantidad de Pokemón'],
+        ['No Evolucionan',      81],
+        ['12 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,12).length],
+        ['25 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,25).length],
+        ['50 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,50).length],
+        ['100 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,100).length],
+        ['400 Candys',    window.pokego2.filterData(window.POKEMON.pokemon,400).length],
+       
+      ]);
 
-  let chart = new window.google.visualization.Histogram(document.getElementById('donutchart'));
-  chart.draw(data, options);
-}
+      let materialOptions = {
+        'width': 750, 
+        'height': 350,
+      };
+
+
+      let materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+      materialChart.draw(data, materialOptions);
+    }
+
+    //aqui se muestra las imagenes filtradas por candy
+
+    document.getElementById("selectCandy").addEventListener("change",() =>{
+      document.getElementById("contenedorCandy").innerHTML = " "  
+        
+       let candy = Number(document.getElementById("selectCandy").value)
+        for (let i = 0; i <window.pokego2.filterData(thepokemon.pokemon, candy).length ; i++){   
+  
+         document.getElementById("contenedorCandy").innerHTML += ` 
+         <div class="col s12 m4">
+         <h4 class="header"><b># ${window.pokego2.filterData(thepokemon.pokemon, candy)[i].num}</b></h4>
+         <div class="card horizontal">
+           <div class="card-image">
+             <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego2.filterData(thepokemon.pokemon, candy)[i].num}.png">
+           </div>
+           <div class="card-stacked">
+             <div class="card-content">
+               <h5>${window.pokego2.filterData(thepokemon.pokemon, candy)[i].name}</h5>
+             </div>
+             <div class="card-action">
+                 <button class="ficha2 waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
+             </div>
+           </div>
+         </div>
+       </div>
+           `;
+          }
+          let fichaPokemon2 = document.getElementsByClassName("ficha2")
+          abrirFicha(window.pokego2.filterData(thepokemon.pokemon, candy),fichaPokemon2); 
+          });

@@ -46,7 +46,6 @@
 
   <p class="text">Conoce a todos los Pokemón de la Región de Kanto</p> 
 
-  <section id="root" class="container-fluid"></section> <!--confirmar con la cami para sacar-->
 
 
        <div class="row"> 
@@ -184,11 +183,26 @@
 <!-- Aquí va el gráfico -->
 <div id= "grafic" class="grafic2">
   
-<h5 class="textCandy"> Grupos de Pokemón de Acuerdo a la Cantidad de Candy que Necesitan para Evolucionar <br>(en cada grupo se muestra la cantidad de Pokemón que lo integran)</h5> <br><br>
+<h5 class="textCandy"> Grupos de Pokemón de Acuerdo a la Cantidad de Candy que Necesitan para Evolucionar</h5> <br><br>
 
-  <div id="donutchart"></div>
-  
+  <div id="chart_div"></div>
 
+  <div class="row"> 
+      <div class="input-field col s12 m6">
+          <select id="selectCandy" class="selectCandy2">
+             <option value="seleccione_opcion">Conoce a los Pokemón</option>
+             <option value="12">Necesitan 12 Candy</option> 
+             <option value="25">Necesitan 25 Candy</option>  
+             <option value="50">Necesitan 50 Candy</option>
+             <option value="100">Necesitan 100 Candy</option>
+             <option value="400">Necesitan 400 Candy</option>
+          </select>
+       </div>
+    </div>
+        <div class="row">
+          <div id="contenedorCandy" class="contenedorCandy2" ></div> <!--aqui se imprime los pokemon por cantidad de candy-->
+        </div>
+    
 </div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

@@ -255,9 +255,8 @@ body{
     text-align: center;
 }
 
-#donutchart{
-    position: center; 
-    width:90%; 
-    margin-left: 16%; 
-    margin-bottom: 5%;
+#chart_div{
+    width:80%; 
+    margin-left: 24%; 
+    margin-bottom: 3%;
 }
