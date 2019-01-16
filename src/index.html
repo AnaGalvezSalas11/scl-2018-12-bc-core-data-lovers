@@ -21,7 +21,7 @@
               <li><a href="https://es.wikihow.com/jugar-Pok%C3%A9mon-GO"><br> ¿Cómo jugar Pokemón GO?</a></li>
               <li><a href="https://es.wikihow.com/ser-un-Maestro-Pok%C3%A9mon"><br>Como ser un Maestro Pokemón</a></li>
               <li><br><a class="waves-effect waves-teal btn-flat" id="btnCalculo">Hora de aparición</a></li>
-              <li><br><a class="waves-effect waves-teal btn-flat" id="btnCandy">Candy</a></li>
+              <li><br><a class="waves-effect waves-teal btn-flat" id="btnCandy">Candys</a></li>
             </ul> 
           </div>
         </nav>
@@ -31,12 +31,12 @@
 
 
   <!-- Aqui va la portada -->
-  <div id="portada">
+  <!-- <div id="portada">
     <h5 class="textoIntro">En PokeGo conocerás a<br>
        todos los Pokemón de la<br>
         región de Kanto</h5>
     <a id="go" class="go"><img class="button" src="img/botongo.png" alt="img/botongo.png" ></a>
-    </div> 
+    </div>  -->
 
   <div id= "information" class="information">
 
@@ -44,7 +44,7 @@
  <div class="container"> <!--se hace las grillas con este DIV  -->
 
 
-  <p class="text">Conoce a todos los Pokemón de la Región de Kanto y agrupalos también por tipo.</p> 
+  <p class="text">Conoce a todos los Pokemón de la Región de Kanto</p> 
 
   <section id="root" class="container-fluid"></section> <!--confirmar con la cami para sacar-->
 
@@ -182,28 +182,29 @@
 </div>
 
 <!-- Aquí va el gráfico -->
-<div id= "grafic" class="grafic">
-    
-    <div id="donutchart" style="width: 900px; height: 500px;"></div>
-    
+<div id= "grafic" class="grafic2">
+  
+<h5 class="textCandy"> Grupos de Pokemón de Acuerdo a la Cantidad de Candy que Necesitan para Evolucionar <br>(en cada grupo se muestra la cantidad de Pokemón que lo integran)</h5> <br><br>
+
+  <div id="donutchart"></div>
+  
 
 </div>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script $(window).resize(function(){donutchart();});></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!--listo-->
-<script src="https://unpkg.com/image-map/dist/image-map.min.js"></script>       
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script $(window).resize(function(){donutchart();});></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!--listo-->
+    <script src="https://unpkg.com/image-map/dist/image-map.min.js"></script>       
     <!-- <script src="./data/injuries/injuries.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!--listo-->
-<script src="https://unpkg.com/image-map/dist/image-map.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!--listo-->
+    <script src="https://unpkg.com/image-map/dist/image-map.min.js"></script>
     <script src="./data/pokemon/pokemon.js"></script>
     <!-- <script src="./data/steam/steam.js"></script> -->
     <!-- <script src="./data/worldbank/worldbank.js"></script> -->
     <!-- <script src="./data/lol/lol.js"></script> -->
     <script src="data.js"></script>
     <script src="main.js"></script>
-      
    
   </body>
 </html>

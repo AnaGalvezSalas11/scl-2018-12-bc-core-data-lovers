@@ -5,7 +5,7 @@
 
 body{
     background-image: url(img/fondo.png); 
-    background-size: cover; 
+    /* background-size: cover;  */
     
     
 }
@@ -61,6 +61,16 @@ body{
 
 .modal{
     border-radius: 25px;
+    /*width: 50%;*/
+    height: 50%;
+    overflow: hidden;
+}
+
+.puddin1 {
+    padding: 1%;
+}
+.btn-flat i{
+    font-size: 30px;
 }
 
 .type {
@@ -132,7 +142,7 @@ body{
 
 
 #information{
-    display: none;
+    display: block;
     
 }
 .go {
@@ -231,16 +241,23 @@ body{
 .text2{
     text-align: center;
 }
+.ficha{
+    background-color: #1976d2;
+}
 
 #grafic{
     display: none;
+    align-content: center;
+     
 }
 
-#chart_div{
-    width: 100%;
-    left: 23%;;
-    right: -0.22%;
-    top: 50%;
-    bottom: 0%;
+.textCandy{
+    text-align: center;
+}
 
+#donutchart{
+    position: center; 
+    width:90%; 
+    margin-left: 16%; 
+    margin-bottom: 5%;
 }
