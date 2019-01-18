@@ -98,10 +98,9 @@ computeStats:(data, hours) => {
 
 
 //obervaciones de Ale:
- //cambiar las variables en ingles y que sean bien descriptivas
  //trabajar más con arreglos
  //revizar html semantico, hay muchos div y desorden
  //css hay class duplicadas, falto DRY
- //    
+ 
 
 

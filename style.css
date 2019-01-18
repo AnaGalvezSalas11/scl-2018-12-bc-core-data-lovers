@@ -263,7 +263,14 @@ body{
     
 }
 
-#textAndGrafic{
-    display: none;
+.contenido{
+    width: 50%;
+    height: 30%;
+   
 }
 
+/* #imgClock{
+    width: 60%;
+    height: 60%;
+    padding-left: 40%;
+} */
