@@ -20,28 +20,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// INTERACCION BOTON GO
-//   document.getElementById("go").addEventListener("click", (evento) =>{
-//   evento.preventDefault();
-//   document.getElementById("portada").style.display="none";
-//   document.getElementById("information").style.display="block";
-//   imagePokemon(); //aqui se agrega las imagenes de los pokemon
-// })
-
 //AQUI VA BOTON CALCULAR
   document.getElementById("btnCalculo").addEventListener("click", () =>{
-  document.getElementById("information").style.display="none";
-  //document.getElementById("portada").style.display="none";
+  document.getElementById("informationPokemon").style.display="none";
   document.getElementById("grafic").style.display="none"
-  document.getElementById("calculo").style.display="block";
+  document.getElementsByClassName("textCandy")[0].style.display="none"
+  document.getElementById("calculation").style.display="block";
   window.ImageMap('img[usemap]') 
 })
 
 //Aqui va boton volver del logo GO!
 document.getElementById("brand-logo").addEventListener("click", () =>{
-document.getElementById("calculo").style.display="none";
+document.getElementById("calculation").style.display="none";
 document.getElementById("grafic").style.display="none"
-document.getElementById("information").style.display="block";
+document.getElementById("informationPokemon").style.display="block";
 imagePokemon();
 
 })
@@ -49,11 +41,10 @@ imagePokemon();
 //INTERACCIÓN BOTON CANDY
 
 document.getElementById("btnCandy").addEventListener("click", () =>{
-  document.getElementById("information").style.display="none";
-  document.getElementById("calculo").style.display="none"
+  document.getElementById("informationPokemon").style.display="none";
+  document.getElementById("calculation").style.display="none"
+  document.getElementsByClassName("textCandy")[0].style.display="block"
   document.getElementById("grafic").style.display="block";
-  
-  
   })
 
 
@@ -64,13 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // interaccion del boton filtrar por tipo
 
-document.getElementById("select2").addEventListener("change",() =>{
-    document.getElementById("ordenado").innerHTML = " "  //cambiamos nombre de div en esta interacción
+document.getElementById("selectType").addEventListener("change",() =>{
+    document.getElementById("container_organized").innerHTML = " "  //cambiamos nombre de div en esta interacción
       
-     let tipo =document.getElementById("select2").value
+     let tipo =document.getElementById("selectType").value
       for (let i = 0; i <window.pokego2.filterData(thepokemon.pokemon, tipo).length ; i++){   
 
-       document.getElementById("ordenado").innerHTML += ` 
+       document.getElementById("container_organized").innerHTML += ` 
        <div class="col s12 m4">
        <h4 class="header"><b># ${window.pokego2.filterData(thepokemon.pokemon, tipo)[i].num}</b></h4>
        <div class="card horizontal">
@@ -82,7 +73,7 @@ document.getElementById("select2").addEventListener("change",() =>{
              <h5>${window.pokego2.filterData(thepokemon.pokemon, tipo)[i].name}</h5>
            </div>
            <div class="card-action">
-               <button class="ficha waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
+               <button class="card_container waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
            </div>
          </div>
        </div>
@@ -92,7 +83,7 @@ document.getElementById("select2").addEventListener("change",() =>{
 
      
    }
-   abrirFicha(window.pokego2.filterData(thepokemon.pokemon, tipo), fichaPokemon); 
+   abrirFicha(window.pokego2.filterData(thepokemon.pokemon, tipo), card_Pokemon); 
    });
 
 
@@ -102,27 +93,27 @@ document.getElementById("select2").addEventListener("change",() =>{
 
 //interacción del boton ordenar
 
-const div_contenedor = document.getElementById("ordenado"); //imprime el listado ordenado
+const div_container = document.getElementById("container_organized"); //imprime el listado ordenado
 
-  document.getElementById("select1").addEventListener("change", () => {
-      div_contenedor.innerHTML=""
+  document.getElementById("selectOrder").addEventListener("change", () => {
+    div_container.innerHTML=""
 
-      if (document.getElementById("select1").value === "a-z" || document.getElementById("select1").value === "z-a") {
+      if (document.getElementById("selectOrder").value === "a-z" || document.getElementById("selectOrder").value === "z-a") {
         for (let i = 0; i < thepokemon.pokemon.length ;i++) {
      
-        document.getElementById("ordenado").innerHTML +=` 
+        document.getElementById("container_organized").innerHTML +=` 
         <div class="col s12 m4">
-        <h5 class="header"><b>#${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value)[i].num}</b></h5>
+        <h5 class="header"><b>#${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("selectOrder").value)[i].num}</b></h5>
         <div class="card horizontal">
           <div class="card-image">
-            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value)[i].num}.png" alt="${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value)[i].img}">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("selectOrder").value)[i].num}.png" alt="${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("selectOrder").value)[i].img}">
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <h5> ${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value)[i].name}</h5>
+              <h5> ${window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("selectOrder").value)[i].name}</h5>
             </div>
             <div class="card-action">
-                <button class="ficha waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
+                <button class="card_container waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
             </div>
           </div>
         </div>
@@ -130,24 +121,24 @@ const div_contenedor = document.getElementById("ordenado"); //imprime el listado
      `    
      ;}
 
-     abrirFicha(window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("select1").value),fichaPokemon); 
+     abrirFicha(window.pokego.sortData(thepokemon.pokemon, "name", document.getElementById("selectOrder").value),card_Pokemon); 
      }     
 
-    if (document.getElementById("select1").value === "1-151"){
+    if (document.getElementById("selectOrder").value === "1-151"){
     for (let i = 0; i < thepokemon.pokemon.length ;i++) {
-    document.getElementById("ordenado").innerHTML += `
+    document.getElementById("container_organized").innerHTML += `
     <div class="col s12 m4">
-        <h5 class="header"><b>#${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value)[i].num}</b></h5>
+        <h5 class="header"><b>#${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("selectOrder").value)[i].num}</b></h5>
         <div class="card horizontal">
           <div class="card-image">
-            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value)[i].num}.png" alt="${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value)[i].img}">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("selectOrder").value)[i].num}.png" alt="${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("selectOrder").value)[i].img}">
           </div>
           <div class="card-stacked">
             <div class="card-content">
-              <h5> ${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value)[i].name}</h5>
+              <h5> ${window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("selectOrder").value)[i].name}</h5>
             </div>
             <div class="card-action">
-                <button class="ficha waves-effect waves btn modal-trigger "href="#modal1" >Ficha pokemon</button>
+                <button class="card_container waves-effect waves btn modal-trigger "href="#modal1" >Ficha pokemon</button>
             </div>
           </div>
         </div>
@@ -155,23 +146,19 @@ const div_contenedor = document.getElementById("ordenado"); //imprime el listado
     
           
     }
-    abrirFicha(window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("select1").value), fichaPokemon); 
+    abrirFicha(window.pokego.sortData(thepokemon.pokemon, "number", document.getElementById("selectOrder").value), card_Pokemon); 
 
     }});
 
   
-     
-
-
-
           
 //aquí va la interaccion de las fichas por pokemon
 
-let fichaPokemon = document.getElementsByClassName("ficha");
-function abrirFicha(data, fichaPokemon) {
-  for (let i = 0; i < fichaPokemon.length; i++) {
-    fichaPokemon[i].addEventListener("click", () => {
-      document.getElementById("probandomodal").innerHTML = `
+let card_Pokemon = document.getElementsByClassName("card_container");
+function abrirFicha(data, card_Pokemon) {
+  for (let i = 0; i < card_Pokemon.length; i++) {
+    card_Pokemon[i].addEventListener("click", () => {
+      document.getElementById("card_information").innerHTML = `
                 <div id="modal1" class="modal">   
                 <div class="row puddin1">
                  <div class="col s12 m7 l4">
@@ -233,104 +220,104 @@ function abrirFicha(data, fichaPokemon) {
 //visualización del calculo      
 
 const result = document.querySelector("#result")
-document.getElementById("uno").addEventListener("click", () => {
+document.getElementById("one").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "01:")}`
 });
 
 
-document.getElementById("dos").addEventListener("click", () => {
+document.getElementById("two").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "02:")}`
 });
 
-document.getElementById("tres").addEventListener("click", () => {
+document.getElementById("three").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "03:")}`
 });
 
-document.getElementById("cuatro").addEventListener("click", () => {
+document.getElementById("four").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "04:")}`
 });
 
-document.getElementById("cinco").addEventListener("click", () => {
+document.getElementById("five").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "05:")}`
 });
 
-document.getElementById("seis").addEventListener("click", () => {
+document.getElementById("six").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "06:")}`
 });
 
-document.getElementById("siete").addEventListener("click", () => {
+document.getElementById("seven").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "07:")}`
 });
 
-document.getElementById("ocho").addEventListener("click", () => {
+document.getElementById("eight").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "08:")}`
 });
 
-document.getElementById("nueve").addEventListener("click", () => {
+document.getElementById("nine").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "09:")}`
 });
 
-document.getElementById("diez").addEventListener("click", () => {
+document.getElementById("ten").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "10:")}`
 });
 
-document.getElementById("once").addEventListener("click", () => {
+document.getElementById("eleven").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "11:")}`
 });
 
-document.getElementById("doce").addEventListener("click", () => {
+document.getElementById("twelve").addEventListener("click", () => {
   result.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "12:")}`
 });
 
 
 
 const resultTwo = document.querySelector("#resultTwo")
-document.getElementById("trece").addEventListener("click", () => {
+document.getElementById("thirteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "13:")}`
 });
 
 
-document.getElementById("catorce").addEventListener("click", () => {
+document.getElementById("fourteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "14:")}`
 });
 
-document.getElementById("quince").addEventListener("click", () => {
+document.getElementById("fifteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "15:")}`
 });
 
-document.getElementById("dieciseis").addEventListener("click", () => {
+document.getElementById("sixteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "16:")}`
 });
 
-document.getElementById("diecisiete").addEventListener("click", () => {
+document.getElementById("seventeen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "17:")}`
 });
 
-document.getElementById("dieciocho").addEventListener("click", () => {
+document.getElementById("eighteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "18:")}`
 });
 
-document.getElementById("diecinueve").addEventListener("click", () => {
+document.getElementById("nineteen").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "19:")}`
 });
 
-document.getElementById("veinte").addEventListener("click", () => {
+document.getElementById("twenty").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "20:")}`
 });
 
-document.getElementById("veintiuno").addEventListener("click", () => {
+document.getElementById("twenty_one").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "21:")}`
 });
 
-document.getElementById("veintidos").addEventListener("click", () => {
+document.getElementById("twenty_two").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "22:")}`
 });
 
-document.getElementById("veintitres").addEventListener("click", () => {
+document.getElementById("twenty_three").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "23:")}`
 });
 
-document.getElementById("veinticuatro").addEventListener("click", () => {
+document.getElementById("twenty_four").addEventListener("click", () => {
   resultTwo.innerHTML = ` ${window.pokego.computeStats(thepokemon.pokemon, "00:")}`
 });
            
@@ -341,7 +328,7 @@ document.getElementById("veinticuatro").addEventListener("click", () => {
 
 function imagePokemon (data){
   for (let i = 0; i < data.pokemon.length ;i++) {
-    document.getElementById("ordenado").innerHTML += `
+    document.getElementById("container_organized").innerHTML += `
     <div class="col s12 m4">
         <h5 class="header"><b>#${data.pokemon[i].num}</b></h5>
         <div class="card horizontal">
@@ -353,22 +340,22 @@ function imagePokemon (data){
               <h5> ${data.pokemon[i].name}</h5>
             </div>
             <div class="card-action">
-                <button class="ficha waves-effect waves btn modal-trigger "href="#modal1" >Ver ficha</button>
+                <button class="card_container waves-effect waves btn modal-trigger "href="#modal1" >Ver ficha</button>
             </div>
           </div>
         </div>
       </div>  `      
 }
- abrirFicha(data.pokemon, fichaPokemon)        
+ abrirFicha(data.pokemon, card_Pokemon)        
 }
 
       // Aquí se muestra el grafico
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawMaterial);
+window.google.charts.load('current', {packages: ['corechart', 'bar']});
+window.google.charts.setOnLoadCallback(drawMaterial);
 
 function drawMaterial() {
-      let data = google.visualization.arrayToDataTable([
+      let data = window.google.visualization.arrayToDataTable([
         ['Candys', 'Cantidad de Pokemón'],
         ['No Evolucionan',      81],
         ['12 Candys',     window.pokego2.filterData(window.POKEMON.pokemon,12).length],
@@ -385,19 +372,19 @@ function drawMaterial() {
       };
 
 
-      let materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+      let materialChart = new window.google.charts.Bar(document.getElementById('chart_div'));
       materialChart.draw(data, materialOptions);
     }
 
     //aqui se muestra las imagenes filtradas por candy
 
     document.getElementById("selectCandy").addEventListener("change",() =>{
-      document.getElementById("contenedorCandy").innerHTML = " "  
+      document.getElementById("container_Candy").innerHTML = " "  
         
        let candy = Number(document.getElementById("selectCandy").value)
         for (let i = 0; i <window.pokego2.filterData(thepokemon.pokemon, candy).length ; i++){   
   
-         document.getElementById("contenedorCandy").innerHTML += ` 
+         document.getElementById("container_Candy").innerHTML += ` 
          <div class="col s12 m4">
          <h4 class="header"><b># ${window.pokego2.filterData(thepokemon.pokemon, candy)[i].num}</b></h4>
          <div class="card horizontal">
@@ -409,13 +396,13 @@ function drawMaterial() {
                <h5>${window.pokego2.filterData(thepokemon.pokemon, candy)[i].name}</h5>
              </div>
              <div class="card-action">
-                 <button class="ficha2 waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
+                 <button class="card_container2 waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
              </div>
            </div>
          </div>
        </div>
            `;
           }
-          let fichaPokemon2 = document.getElementsByClassName("ficha2")
-          abrirFicha(window.pokego2.filterData(thepokemon.pokemon, candy),fichaPokemon2); 
+          let card_Pokemon2 = document.getElementsByClassName("card_container2")
+          abrirFicha(window.pokego2.filterData(thepokemon.pokemon, candy),card_Pokemon2); 
           });

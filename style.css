@@ -141,7 +141,7 @@ body{
   }
 
 
-#information{
+#informationPokemon{
     display: block;
     
 }
@@ -183,7 +183,7 @@ body{
 }
 
 
-.botonOcultar {
+.buttonOcultar {
     display: none;
     }
 
@@ -206,7 +206,7 @@ body{
     width: 360px;
 }
 
-#calculo {
+#calculation {
 
     display: none
 }
@@ -253,10 +253,17 @@ body{
 
 .textCandy{
     text-align: center;
+    
 }
 
 #chart_div{
     width:80%; 
     margin-left: 24%; 
     margin-bottom: 3%;
+    
 }
+
+#textAndGrafic{
+    display: none;
+}
+
