@@ -169,7 +169,7 @@ function abrirFicha(data, card_Pokemon) {
                       <div class="weight"><b>Peso:</b>${data[i].weight}</div>
                        <div class="candy_count"><b>Conteo de dulces:</b>${data[i].candy_count}</div>
                        <div class="egg"><b>Huevo:</b>${data[i].egg}</div>
-                       <div class="spawn_chance"><b>Probabilidad encontrarlo:</b>${data[i].spawn_chance}</div>
+                       <div class="spawn_chance"><b>Probabilidad de encontrarlo:</b>${data[i].spawn_chance}</div>
                        
 
                    </div>
@@ -364,3 +364,8 @@ function drawMaterial() {
           let card_Pokemon2 = document.getElementsByClassName("card_container2")
           abrirFicha(window.pokego2.filterData(thepokemon.pokemon, candy),card_Pokemon2); 
           });
+
+
+
+  
+               

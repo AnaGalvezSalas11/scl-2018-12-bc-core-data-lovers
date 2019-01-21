@@ -29,12 +29,19 @@ describe('pokego2.filterData', () => {
 
 
 describe('data.filter', () => {
-  it('debería retornar "Bulbasaur al seleccionar pokemon de tipo Veneno"', () => {
+  it('debería retornar "Bulbasaur al seleccionar Pokemon de tipo Veneno"', () => {
     assert.equal(window.pokego2.filterData(window.POKEMON.pokemon, "Poison")[0].name,"Bulbasaur") 
 
     })
+  it ('debería terornar "Magikarp al seleccionar Pokemon que necesitan 400 candys para evolucionar"', () => {
+    assert.equal(window.pokego2.filterData(window.POKEMON.pokemon, 400)[0].name, "Magikarp")
+  })
 
+it('debería terornar "Weedle al seleccionar Pokemon que necesitan 12 candys para evolucionar"', () => {
+  assert.equal(window.pokego2.filterData(window.POKEMON.pokemon, 12) [1].name, "Weedle")
+})
   });
+
 
  
 describe('pokego.sortData', () => {
@@ -75,3 +82,5 @@ describe('pokego.sortData', () => {
     })
 
   });
+
+

@@ -97,10 +97,7 @@ computeStats:(data, hours) => {
   };
 
 
-//obervaciones de Ale:
- //trabajar más con arreglos
- //revizar html semantico, hay muchos div y desorden
- //css hay class duplicadas, falto DRY
+
  
 
 
