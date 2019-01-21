@@ -277,3 +277,6 @@ body{
 .clock{
     top: 90%;
 }
+.textOption{
+    text-align: center;
+}
