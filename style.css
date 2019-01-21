@@ -57,6 +57,7 @@ body{
 .card .card-content {
    
     color:#093375;
+    
 }
 
 .modal{
@@ -220,14 +221,10 @@ body{
 
 }
 
-.card-content white-text{
-    position: absolute;
-    top:50px;
+.card-content black-text{
+    margin: 10px;
+    text-align: left;
 }
-
-
-
-
 
 .relojPm{
         padding: 5px 10px 5px 10px;
@@ -240,6 +237,8 @@ body{
 
 .text2{
     text-align: center;
+    margin: 30px;
+
 }
 .ficha{
     background-color: #1976d2;
@@ -253,6 +252,7 @@ body{
 
 .textCandy{
     text-align: center;
+    
     
 }
 
@@ -269,8 +269,11 @@ body{
    
 }
 
-/* #imgClock{
-    width: 60%;
-    height: 60%;
-    padding-left: 40%;
-} */
+
+.porcentaje{
+    margin-left: 50%
+}
+
+.clock{
+    top: 90%;
+}
