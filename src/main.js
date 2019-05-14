@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // interaccion del boton filtrar por tipo
 
 document.getElementById("selectType").addEventListener("change",() =>{
-    document.getElementById("container_organized").innerHTML = " "  //cambiamos nombre de div en esta interacción
+    document.getElementById("container_organized").innerHTML = " "  
       
      let tipo =document.getElementById("selectType").value
       for (let i = 0; i <window.pokego2.filterData(thepokemon.pokemon, tipo).length ; i++){   
@@ -364,6 +364,40 @@ function drawMaterial() {
           let card_Pokemon2 = document.getElementsByClassName("card_container2")
           abrirFicha(window.pokego2.filterData(thepokemon.pokemon, candy),card_Pokemon2); 
           });
+
+          // aqui se muestran las imagenes por hora de aparicion
+
+          document.getElementById("select_hour").addEventListener("change",() =>{
+            document.getElementById("container_hourApparition").innerHTML = " "  
+              
+             let hour = document.getElementById("select_hour").value
+              for (let i = 0; i <window.pokego.computeStats(thepokemon.pokemon, hour).length ; i++){   
+        
+               document.getElementById("container_hourApparition").innerHTML += ` 
+               <div class="col s12 m4">
+               <h4 class="header"><b># ${window.pokego.computeStats(thepokemon.pokemon, hour)[i].num}</b></h4>
+               <div class="card horizontal">
+                 <div class="card-image">
+                   <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${window.pokego.computeStats(thepokemon.pokemon, hour)[i].num}.png">
+                 </div>
+                 <div class="card-stacked">
+                   <div class="card-content">
+                     <h5>${window.pokego.computeStats(thepokemon.pokemon, hour)[i].name}</h5>
+                   </div>
+                   <div class="card-action">
+                       <button class="card_container3 waves-effect waves btn modal-trigger  " href="#modal1" >Ficha pokemon</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+                 `;
+                }
+                let card_Pokemon3 = document.getElementsByClassName("card_container3")
+                abrirFicha(window.pokego.computeStats(thepokemon.pokemon, hour),card_Pokemon3); 
+                });
+  
+  
+  
 
 
 

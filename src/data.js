@@ -55,7 +55,6 @@ window.pokego = {
   }
   
 },
-//podria cambiarlo por un map
 computeStats:(data, hours) => {
   let groupForHour = []
   let counter = 0
