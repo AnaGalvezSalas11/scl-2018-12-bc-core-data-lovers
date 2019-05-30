@@ -136,15 +136,15 @@ Diseñamos protptipo de pagina que consta de tres pantalla, la primera es de bie
 
 En esta imagen se muestra el protitpo de flujo de nuestra pagina
 
-![imagen 1](img/sketch1.png) 
+![imagen 1](src/img/sketch1.png) 
 
 Aquí detallamos como se va a interactuar la información en la pantalla dos:
 
-![imagen 2](img/sketch2.png)
+![imagen 2](src/img/sketch2.png)
 
 En esta última imagen es como tenemos pensado mostrar nuestro calculo de data.
 
-![imagen 3](img/sketch3.png)
+![imagen 3](src/img/sketch3.png)
 
 ### **Prototipo de alta de nuestra pagina Pokego!**
 
@@ -171,14 +171,14 @@ Las observaciones que tuvimos de los usuarios frente a nuestro prototipo de pagi
  
 Paleta de colores usada en la interfaz:
 
-![Paleta de colores](img/paleta.png)
+![Paleta de colores](src/img/paleta.png)
 
 
 
 
 ### **Flujo interactivo de PokeGO!**
 
-![Flujo de usuario](img/Flujo_de_usuario.png)
+![Flujo de usuario](src/img/Flujo_de_usuario.png)
 
 
 ### **Planificación en Trello**
