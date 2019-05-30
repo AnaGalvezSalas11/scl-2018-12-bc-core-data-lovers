@@ -1,6 +1,6 @@
 
 
-[VER DEMO](https://github.com/AnaGalvezSalas11/scl-2018-12-bc-core-data-lovers)
+[VER DEMO](https://anagalvezsalas11.github.io/scl-2018-12-bc-core-data-lovers/)
 
 
 # POKEGO
