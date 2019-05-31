@@ -4,7 +4,7 @@
 
 Tecnologías utilizadas:
 * Javascript
-* materialize
+* Materialize
 
 
 
