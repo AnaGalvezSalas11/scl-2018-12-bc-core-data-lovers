@@ -2,6 +2,11 @@
 
 [VER DEMO](https://anagalvezsalas11.github.io/scl-2018-12-bc-core-data-lovers/)
 
+Tecnologías utilizadas:
+* Javascript
+* materialize
+
+
 
 # POKEGO
 
